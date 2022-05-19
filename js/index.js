@@ -1,7 +1,17 @@
 categories = [];
 
+// Create button addSubCategory
+const addButtonSubcategory = (category) => {
+  const categorySelected = document.getElementById(category);
+  const button = document.createElement("button");
+  button.innerText = "Agregar Subcategoría";
+  button.setAttribute("id", `${category}-link`);
+  button.setAttribute("class", "btn btn-outline-success");
+  categorySelected.appendChild(button);
+};
+
 // Save Function
-const addElement = (button, addFunction) => {
+const addCategory = (button, addFunction) => {
   button.onclick = () => {
     const inputAdd = document.getElementById("inputAdd");
     const value = inputAdd.value;
@@ -10,6 +20,7 @@ const addElement = (button, addFunction) => {
     const modalComponent = document.getElementById("addModal");
     modalComponent.classList.remove("show");
     addFunction(value);
+    alertify.notify("Categoría cargada exitosamente", "success", 3);
   };
 };
 const saveButton = document.getElementById("saveButton");
@@ -17,13 +28,40 @@ const saveButton = document.getElementById("saveButton");
 //Add Category
 const addCategoryFront = (category) => {
   const categoriesList = document.getElementById("categories");
+  const categoryContainer = document.createElement("div");
+  categoryContainer.setAttribute("id", `${category}`);
+  categoryContainer.setAttribute("class", "container column-2");
   const title = document.createElement("h2");
-  title.setAttribute("id", `${category}`);
   title.innerText = category;
-  categoriesList.appendChild(title);
+  categoriesList.appendChild(categoryContainer);
+  categoryContainer.appendChild(title);
+  addButtonSubcategory(category);
 };
 
-addElement(saveButton, addCategoryFront);
+addCategory(saveButton, addCategoryFront);
+
+// Add Subcategory
+/* const addSubcategoryFront = (category, subcategory) => {
+  const subCategoriesList = document.getElementById(category);
+  const subCategoryContainer = document.createElement("div");
+  subCategoryContainer.setAttribute("id", `${subcategory}`);
+  const input = document.createElement("input");
+  input.setAttribute("target", "_blank");
+  subCategoriesList.appendChild(subCategoryContainer);
+}; */
+
+// Save SubCategory
+/* const addSubcategory = () => {
+  const element = document.getElementsByTagName("h2");
+  const category = element[0].innerText;
+  console.log("category", category);
+  const button = document.getElementById(`yoga-link`);
+  button.onclick = () => {
+    addSubcategoryFront(category, subcategory);
+  };
+};
+
+addSubcategory(); */
 
 //Add Links
 // const addLinks = (link) => {

@@ -28,10 +28,20 @@ body {
   display: none;
 }
 
+.add-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn {
+  width: max-content;
+  display: flex !important;
+  justify-content: flex-end;
+}
+
 .column-2 {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   padding: 1em 0;
 }
 
